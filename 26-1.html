@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Radius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function calculateCircumference() {
+            const radius = parseFloat(new URLSearchParams(window.location.search).get("radius"));
+            if (radius > 0) {
+                const circumference = 2 * Math.PI * radius;
+                document.getElementById("result").innerText = "Chu vi: " + circumference.toFixed(2);
+            } else {
+                document.getElementById("result").innerText = "Bán kính không hợp lệ.";
+            }
+        }
+
+        function calculateArea() {
+            const radius = parseFloat(new URLSearchParams(window.location.search).get("radius"));
+            if (radius > 0) {
+                const area = Math.PI * radius * radius;
+                document.getElementById("result").innerText = "Diện tích: " + area.toFixed(2);
+            } else {
+                document.getElementById("result").innerText = "Bán kính không hợp lệ.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Kết quả tính toán</h2>
+    <button onclick="calculateCircumference()">Tính chu vi</button>
+    <button onclick="calculateArea()">Tính diện tích</button>
+    <p id="result"></p>
+</body>
+</html>
